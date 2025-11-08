@@ -1,0 +1,19 @@
+h1{
+  color: blueviolet;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+hr{
+  height: 5px;
+  background-color: black;
+}
+button{
+  background-color: lightblue;
+  transition: all 300ms;
+  border: none;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 20px;
+}
+button:hover{
+  background-color: blueviolet;
+}
