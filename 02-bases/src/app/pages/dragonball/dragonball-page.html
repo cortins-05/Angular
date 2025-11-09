@@ -3,20 +3,54 @@
 
 <section class="row">
     <div class="col-12 col-sm-6">
-        <h3>Agregar</h3>
-        <input type="text" class="form-control" placeholder="Nombre">
-        <input type="number" placeholder="Poder" id="" class="form-control mt-2">
-        <button class="btn btn-primary mt-3">Agregar</button>
+        <h3>Agregar {{name()}}</h3>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          [value]="name()"
+          (input)="name.set(txtName.value)"
+          #txtname
+        >
+        <input
+          type="number"
+          placeholder="Poder"
+          class="form-control mt-2"
+          [value]="power()"
+          (input)="power.set(txtPower.value)"
+          #txtPower
+        >
+        <button (click)="addCharacter()" class="btn btn-primary mt-3">Agregar</button>
     </div>
 
     <div class="col-12 col-sm-6">
         <h3>Listado</h3>
-        <ol>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-        </ol>
+        <ul>
+          @for (character of characters(); track character.id; let idx = $index ){
+            @if(character.power > 500){
+              <li>
+                <span> {{idx+1}} - {{character.name}} </span>
+
+                <strong
+                  [class.text-danger]="character.power > 9000"
+                  [class.text-primary]="character.power < 9000"
+                >
+                  <!--[ngClass]="powerClasses()"-->
+                  ({{character.power}})
+                </strong>
+
+                @if($last){
+                  <strong>-Ultimo elmento</strong>
+                }@else if($first){
+                  <strong>-Primer elemento</strong>
+                }
+              </li>
+            }@else {
+              <li>
+                {{$index}} - Aqui no hay nadie
+              </li>
+            }
+          }
+        </ul>
     </div>
 </section>
