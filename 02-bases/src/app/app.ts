@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, provideRouter } from '@angular/router';
 import { Navbar } from './components/shared/navbar/navbar';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,5 @@ export class App {
   cambiarFooter() {
     this.textoFooter = 'Footer cambiado';
   }
+  
 }

@@ -13,21 +13,18 @@ interface Character{
     templateUrl: './dragonball-page.html',
     styleUrl: './dragonball-page.html',
     imports:[
-      NgClass
+      //NgClass
     ]
 })
 export class DragonBall{
 
   txtName:any;
   txtPower:any;
-  name = signal('Gohan');
-  power:any = signal(100);
+  name = signal('');
+  power:any = signal(0);
 
   characters = signal<Character[]>([
     {id:1,name:'Goku',power:9001},
-    {id:2,name:'Vegetta',power:8000},
-    {id:3,name:'Piccolo',power:3000},
-    {id:4,name:'Yamcha',power:500}
   ]);
 
   powerClasses = computed(()=>{
