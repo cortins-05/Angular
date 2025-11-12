@@ -23,6 +23,14 @@ export class GifService {
   trendingGifs = signal<Gif[]>([]);
   trendingGifsLoading = signal(true);
 
+  trendingGifGroup = computed(()=>{
+    const groups = [];
+    for(let i=0;i<this.trendingGifs().length;i+=3){
+      groups.push(this.trendingGifs().slice(i,i+3));
+    }
+    return groups;
+  })
+
   searchLoading = signal(true);
   searchedGifs = signal<Gif[]>([]);
 
@@ -42,7 +50,7 @@ export class GifService {
     this.http.get<GyphyResponse>(`${environment.giphyUrl}/gifs/trending`,{
       params: {
         api_key: environment.giphyApiKey,
-        limit:20,
+        limit:21,
       }
     }).subscribe( (resp)=>{
       const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data);
